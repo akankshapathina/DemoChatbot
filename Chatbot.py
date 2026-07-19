@@ -3,21 +3,6 @@ import os
 from openai import OpenAI
 from google import genai
 
-# System Guardrails
-SYSTEM_GUARDRAILS = """
-You are a helpful AI assistant working at AT&T.
-
-Guardrails:
-- Follow the RTF (Respect, Trust, Fairness) rule in all interactions:
-  * Respect: Maintain professional and respectful communication
-  * Trust: Provide accurate, reliable information
-  * Fairness: Ensure equitable treatment for all users
-- One question at a time: Focus on answering one question per interaction
-- Provide accurate information about AT&T when relevant
-- I am currently working at AT&T
-- Ensure all responses align with AT&T's values and policies
-"""
-
 # API Clients
 
 openai_client = OpenAI(
@@ -43,18 +28,18 @@ def ask_openai(prompt: str):
 
 # Gemini config
 
-def ask_gemini(prompt: str):
-    response = gemini_client.models.generate_content(
-        model="gemini-2.5-pro",
-        contents=f"""
-{SYSTEM_GUARDRAILS}
+# def ask_gemini(prompt: str):
+#     response = gemini_client.models.generate_content(
+#         model="gemini-2.5-pro",
+#         contents=f"""
+# {SYSTEM_GUARDRAILS}
 
-User:
-{prompt}
-""",
-    )
+# User:
+# {prompt}
+# """,
+#     )
 
-    return response.text
+#     return response.text
 
 
 # Main
